@@ -1,0 +1,26 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Funkoshop</a>
+    <a href="" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="hide-on-med-and-down">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/">Home</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/producten">Producten</a>
+      </li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="">Login</a></li>
+      <li><a href="">Register</a></li>
+      <li><a href="#!"><i class="material-icons">shopping_basket</i></a></li>
+    </ul>
+  </div>
+</nav>
+<ul class="sidenav" id="mobileNav">
+  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+  <li routerLinkActive="active"><a routerLink="/producten">Producten</a></li>
+  <li routerLinkActive="active"><a href="">Login</a></li>
+  <li routerLinkActive="active"><a href="">Register</a></li>
+  <li routerLinkActive="active"><a href="">Cart</a></li>
+</ul>
