@@ -6,6 +6,9 @@ import {ProductListComponent} from './products/product-list/product-list.compone
 import {RegisterComponent} from './user/register/register.component';
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
 import {ProductsComponent} from './products/products.component';
+import {AdminComponent} from './admin/admin.component';
+import {AdminGuardService} from './guards/admin-guard.service';
+import {AdminProductsComponent} from './admin/admin-products/admin-products.component';
 
 
 const routes: Routes = [
@@ -16,7 +19,8 @@ const routes: Routes = [
     ]
   },
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'admin', component: AdminComponent, canActivateChild: [AdminGuardService]},
 ];
 
 @NgModule({

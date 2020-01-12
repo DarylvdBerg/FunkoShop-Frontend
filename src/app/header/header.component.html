@@ -26,7 +26,7 @@
 </nav>
 <ul id="userDropdown" class="dropdown-content">
   <li><a href="">Profiel</a></li>
-  <li *ngIf="user != null && user.privilege >= 1"><a href="">Admin</a></li>
+  <li *ngIf="user != null && user.privilege >= 1"><a routerLink="/admin">Admin</a></li>
 </ul>
 <ul class="sidenav" id="mobileNav" *ngIf="user == null; else userLoggedInMobile">
   <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
