@@ -7,7 +7,7 @@
         <a routerLink="/">Home</a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="/producten">Producten</a>
+        <a routerLink="/producten/lijst">Producten</a>
       </li>
     </ul>
     <ul class="right hide-on-med-and-down" *ngIf="user == null; else userLoggedIn">
@@ -30,7 +30,7 @@
 </ul>
 <ul class="sidenav" id="mobileNav" *ngIf="user == null; else userLoggedInMobile">
   <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-  <li routerLinkActive="active"><a routerLink="/producten">Producten</a></li>
+  <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
   <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
   <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
   <li routerLinkActive="active"><a href="">Cart</a></li>
@@ -38,7 +38,7 @@
 <ng-template #userLoggedInMobile>
   <ul class="sidenav" id="mobileNav">
     <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-    <li routerLinkActive="active"><a routerLink="/producten">Producten</a></li>
+    <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
     <li routerLinkActive="active"><a routerLink="/logout">Uitloggen</a></li>
     <li routerLinkActive="active"><a href="">Cart</a></li>
   </ul>
