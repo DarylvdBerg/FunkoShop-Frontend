@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {Product} from '../product.model';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.productSubscription = this.productService.getProducts()
       .subscribe(products => {
-        this.products = products.content;
+        this.products = products;
       });
   }
 

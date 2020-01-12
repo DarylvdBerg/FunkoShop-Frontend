@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     M.Parallax.init(document.querySelectorAll('.parallax'));
     this.prouctsSubscription = this.productService.getProducts()
       .subscribe(products => {
-        this.products = products.content;
+        this.products = products;
       });
   }
 

@@ -12,7 +12,14 @@ export class ProductService {
   constructor(private api: ApiService) {}
 
   getProducts() {
-    return this.api.getRequest('product/all/');
+    const productSubject = new Subject<Product[]>();
+    this.api.getRequest('product/all')
+      .subscribe(response => {
+        const product = response.content as Product[];
+        productSubject.next(product);
+        productSubject.complete();
+      });
+    return productSubject;
   }
 
   // getProduct(id: number) {
