@@ -17,12 +17,17 @@
     </ul>
     <ng-template #userLoggedIn>
       <ul class="right hide-on-med-and-down">
+        <li><a class="dropdown-trigger" href="#!" data-target="userDropdown">Beheer<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a routerLink="/" (click)="logout()">Uitloggen</a></li>
         <li><a href="#!"><i class="material-icons">shopping_basket</i></a></li>
       </ul>
     </ng-template>
   </div>
 </nav>
+<ul id="userDropdown" class="dropdown-content">
+  <li><a href="">Profiel</a></li>
+  <li *ngIf="user != null && user.privilege >= 1"><a href="">Admin</a></li>
+</ul>
 <ul class="sidenav" id="mobileNav" *ngIf="user == null; else userLoggedInMobile">
   <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
   <li routerLinkActive="active"><a routerLink="/producten">Producten</a></li>

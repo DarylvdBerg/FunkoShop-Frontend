@@ -16,9 +16,10 @@ export class HeaderComponent implements OnInit {
     if (localStorage.getItem('user') != null ) {
       this.user = JSON.parse(localStorage.getItem('user'));
     }
+
     document.addEventListener('DOMContentLoaded', () => {
-      const elems = document.querySelectorAll('.sidenav');
-      M.Sidenav.init(elems);
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
+      M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false});
     });
   }
 
