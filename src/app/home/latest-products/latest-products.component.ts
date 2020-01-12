@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../products/product.model';
-import {ApiService} from '../../shared/api.service';
+import {ProductService} from '../../products/product.service';
 
 @Component({
   selector: 'app-latest-products',
@@ -9,16 +9,12 @@ import {ApiService} from '../../shared/api.service';
 })
 export class LatestProductsComponent implements OnInit {
   @Input() product: Product;
-  constructor(private apiService: ApiService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    console.log(this.product);
   }
 
   getProductImage(product: Product) {
-    if (product.images.length >= 1) {
-      return this.apiService.getImageUrl(product.images[0]);
-    }
-    return '';
+    return this.productService.getProductImages(product);
   }
 }

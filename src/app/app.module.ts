@@ -10,13 +10,15 @@ import { LatestProductsComponent } from './home/latest-products/latest-products.
 import {SharedModule} from './shared/shared.module';
 import {ApiService} from './shared/api.service';
 import {HttpClientModule} from '@angular/common/http';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    LatestProductsComponent
+    LatestProductsComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
