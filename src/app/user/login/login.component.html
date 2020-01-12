@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col s12">
+    <div class="row center">
+      <h2>Login</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="input-field col s6 offset-s3">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" ngModel required email #email='ngModel'>
+          <div *ngIf="!email.valid && email.touched">
+            <span class="helper-text" *ngIf="email.errors.required">Email is verplicht!</span>
+            <span class="helper-text" *ngIf="email.errors.email">Email is niet correct!</span>
+          </div>
+        </div>
+        <div class="input-field col s6 offset-s3">
+          <label for="password">Wachtwoord</label>
+          <input type="password" name="password" id="password" ngModel required #password="ngModel">
+          <div *ngIf="!password.valid && password.touched">
+            <span class="helper-text" *ngIf="password.errors.required">Wachtwoord is verplicht!</span>
+          </div>
+        </div>
+        <div class="col s6 offset-s3 left-align">
+          <button class="btn" [disabled]="!this.form.valid">Inloggen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
