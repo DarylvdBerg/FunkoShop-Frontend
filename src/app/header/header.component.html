@@ -10,17 +10,31 @@
         <a routerLink="/producten">Producten</a>
       </li>
     </ul>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="">Login</a></li>
-      <li><a href="">Register</a></li>
+    <ul class="right hide-on-med-and-down" *ngIf="user == null; else userLoggedIn">
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
       <li><a href="#!"><i class="material-icons">shopping_basket</i></a></li>
     </ul>
+    <ng-template #userLoggedIn>
+      <ul class="right hide-on-med-and-down">
+        <li><a routerLink="/" (click)="logout()">Uitloggen</a></li>
+        <li><a href="#!"><i class="material-icons">shopping_basket</i></a></li>
+      </ul>
+    </ng-template>
   </div>
 </nav>
-<ul class="sidenav" id="mobileNav">
+<ul class="sidenav" id="mobileNav" *ngIf="user == null; else userLoggedInMobile">
   <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
   <li routerLinkActive="active"><a routerLink="/producten">Producten</a></li>
-  <li routerLinkActive="active"><a href="">Login</a></li>
-  <li routerLinkActive="active"><a href="">Register</a></li>
+  <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+  <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
   <li routerLinkActive="active"><a href="">Cart</a></li>
 </ul>
+<ng-template #userLoggedInMobile>
+  <ul class="sidenav" id="mobileNav">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+    <li routerLinkActive="active"><a routerLink="/producten">Producten</a></li>
+    <li routerLinkActive="active"><a routerLink="/logout">Uitloggen</a></li>
+    <li routerLinkActive="active"><a href="">Cart</a></li>
+  </ul>
+</ng-template>

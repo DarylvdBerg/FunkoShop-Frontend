@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../shared/api.service';
 import {Product} from './product.model';
 import {Image} from './image.model';
-import {Subject} from "rxjs";
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
