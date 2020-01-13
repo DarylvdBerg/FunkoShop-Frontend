@@ -3,6 +3,7 @@ import {ApiService} from '../shared/api.service';
 import {Product} from './product.model';
 import {Image} from './image.model';
 import {Subject} from 'rxjs';
+import {HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,27 @@ export class ProductService {
 
   getProductImage(image: Image) {
     return this.api.getImageUrl(image);
+  }
+
+  saveProduct(product: Product) {
+    const params = new HttpParams()
+      .set('name', product.name)
+      .set('description', product.description)
+      .set('price', product.price.toString());
+    return this.api.postRequest('product/add', params, true);
+  }
+
+  saveProductImages(images: FileList, productId: number) {
+    const data = new FormData();
+    Array.from(images).forEach(image => {
+      data.append('images', image);
+    });
+
+    return this.api.postMultipartRequest(`images/upload/${productId}`, data, true);
+  }
+
+  deleteProduct(id: number) {
+    return this.api.deleteRequest(`product/delete/${id}`, true);
   }
 
 }

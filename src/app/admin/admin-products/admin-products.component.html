@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s12">
-    <a href="" class="btn">Toevoegen</a>
+    <a routerLink="/admin/product/toevoegen" class="btn">Toevoegen</a>
   </div>
   <div class="col s12">
     <table>
@@ -20,7 +20,7 @@
           <td>{{shortenProductDescription(product.description)}}</td>
           <td>&euro;{{product.price}}</td>
           <td><a href="" class="btn btn-edit">Aanpassen</a></td>
-          <td><a href="" class="btn btn-delete">Verwijderen</a></td>
+          <td><a (click)="deleteProduct(product)" class="btn btn-delete">Verwijderen</a></td>
         </tr>
       </tbody>
     </table>

@@ -10,6 +10,7 @@ import {HomeComponent} from './home/home.component';
 import {HeaderComponent} from './header/header.component';
 import {UserModule} from './user/user.module';
 import {AdminModule} from './admin/admin.module';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AdminModule} from './admin/admin.module';
     ProductsModule,
     AdminModule,
     UserModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

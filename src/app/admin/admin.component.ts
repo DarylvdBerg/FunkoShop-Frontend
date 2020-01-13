@@ -10,7 +10,6 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    M.Tabs.init(document.querySelectorAll('.tabs'));
   }
 
 }
