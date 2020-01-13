@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../../products/product.service';
+import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -8,9 +8,10 @@ import {ProductService} from '../../products/product.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    console.log(this.userService.currentUser);
     M.Tabs.init(document.querySelectorAll('.tabs'));
   }
 

@@ -2,9 +2,15 @@
   <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a href="#producten">Producten</a></li>
-        <li class="tab col s3"><a href="#users">Gebruikers</a></li>
-        <li class="tab col s3"><a href="#orders">Bestellingen</a></li>
+        <li class="tab col s3">
+          <a href="#producten">Producten</a>
+        </li>
+        <li class="tab col s3" [className]="userService.currentUser.privilege >= 2 ? 'tab col s3' : 'hide'">
+          <a href="#users">Gebruikers</a>
+        </li>
+        <li [className]="userService.currentUser.privilege >= 2 ? 'tab col s3' : 'hide'">
+          <a href="#orders">Bestellingen</a>
+        </li>
       </ul>
     </div>
     <div id="producten" class="col s12">
