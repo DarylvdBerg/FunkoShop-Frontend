@@ -28,10 +28,17 @@ export class ApiService {
   postRequest(url: string, data: HttpParams, authToken: boolean) {
     if (authToken) {
       const httpOptions = this.buildHeaderOptions();
-      console.log(httpOptions);
       return this.http.post<any>(this.baseUrl + url, data, httpOptions);
     }
     return this.http.post<any>(this.baseUrl + url, data);
+  }
+
+  putRequest(url: string, data: HttpParams, authToken: boolean) {
+    if (authToken) {
+      const httpOptions = this.buildHeaderOptions();
+      return this.http.put<any>(this.baseUrl + url, data, httpOptions);
+    }
+    return this.http.put<any>(this.baseUrl + url, data);
   }
 
   postMultipartRequest(url: string, data: FormData, authToken: boolean) {

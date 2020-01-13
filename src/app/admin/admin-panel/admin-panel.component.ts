@@ -8,7 +8,7 @@ import {ProductService} from '../../products/product.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor() { }
 
   ngOnInit() {
     M.Tabs.init(document.querySelectorAll('.tabs'));

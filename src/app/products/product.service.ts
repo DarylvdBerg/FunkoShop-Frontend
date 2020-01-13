@@ -57,6 +57,15 @@ export class ProductService {
     return this.api.postRequest('product/add', params, true);
   }
 
+  editProduct(product: Product) {
+    console.log(JSON.stringify(product));
+    const params = new HttpParams()
+      .set('name', product.name)
+      .set('description', product.description)
+      .set('price', product.price.toString());
+    return this.api.putRequest(`product/update/${product.id}`, params, true);
+  }
+
   saveProductImages(images: FileList, productId: number) {
     const data = new FormData();
     Array.from(images).forEach(image => {

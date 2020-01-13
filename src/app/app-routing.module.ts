@@ -8,8 +8,7 @@ import {ProductDetailComponent} from './products/product-detail/product-detail.c
 import {ProductsComponent} from './products/products.component';
 import {AdminComponent} from './admin/admin.component';
 import {AdminGuardService} from './guards/admin-guard.service';
-import {AdminProductsComponent} from './admin/admin-products/admin-products.component';
-import {AddProductComponent} from './admin/admin-products/add-product/add-product.component';
+import {AddEditProductComponent} from './admin/admin-products/add-edit-product/add-product.component';
 import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
 
 
@@ -24,7 +23,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'admin', component: AdminComponent, canActivateChild: [AdminGuardService], children: [
       {path: 'paneel', component: AdminPanelComponent},
-      {path: 'product/toevoegen', component: AddProductComponent}
+      {path: 'product/toevoegen', component: AddEditProductComponent},
+      {path: 'product/:id/aanpassen', component: AddEditProductComponent}
     ]},
 ];
 

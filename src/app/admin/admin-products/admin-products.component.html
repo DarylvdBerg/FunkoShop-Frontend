@@ -19,7 +19,7 @@
           <td>{{product.name}}</td>
           <td>{{shortenProductDescription(product.description)}}</td>
           <td>&euro;{{product.price}}</td>
-          <td><a href="" class="btn btn-edit">Aanpassen</a></td>
+          <td><a routerLink="/admin/product/{{product.id}}/aanpassen" class="btn btn-edit">Aanpassen</a></td>
           <td><a (click)="deleteProduct(product)" class="btn btn-delete">Verwijderen</a></td>
         </tr>
       </tbody>
