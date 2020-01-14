@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../shared/api.service';
 import {HttpParams} from '@angular/common/http';
 import {User} from './user.model';
+import {zip} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,14 @@ export class UserService {
       .set('email', email)
       .set('password', password);
     return this.api.postRequest('users/register', params, false);
+  }
+
+  registerAddress(userId: number, streetAddress: string, zipCode: string, district: string) {
+    const params = new HttpParams()
+      .set('user_id', userId.toString())
+      .set('street_address', streetAddress)
+      .set('zip_code', zipCode)
+      .set('district', district);
+    return this.api.postRequest('address/create', params, false);
   }
 }

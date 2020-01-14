@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../user.service';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
-import {User} from "../user.model";
+import {User} from '../user.model';
 
 @Component({
   selector: 'app-register',
@@ -24,19 +24,37 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.userService.register(this.form.value.name, this.form.value.email, this.form.value.password)
-        .subscribe((response) => {
-          const user = response.content as User;
-          localStorage.setItem('user', JSON.stringify(user));
-          this.userService.currentUser = user;
-          const toast = M.toast({html: response.message});
-          setTimeout(() => {
-            toast.dismiss();
-            this.route.navigate(['/']);
-          }, 1000);
-        }, error => {
-          M.toast({html: error.error.meaning});
-        });
+      this.register();
     }
+  }
+
+  private register() {
+    this.userService.register(this.form.value.name, this.form.value.email, this.form.value.password)
+      .subscribe((response) => {
+        const user = response.content as User;
+        localStorage.setItem('user', JSON.stringify(user));
+        this.userService.currentUser = user;
+        this.registerAddress(user.id, this.form.value.streetAddress,
+          this.form.value.zipCode, this.form.value.district, response);
+      }, errors => {
+        M.toast({html: errors.error.message});
+      });
+  }
+
+  private registerAddress(userId: number, streetAddress: string, zipCode: string, district: string, response) {
+    this.userService.registerAddress(userId, streetAddress, zipCode, district)
+      .subscribe(() => {
+        const toast = M.toast({html: response.message});
+        this.navigateToHome(toast);
+      }, errors => {
+        M.toast({html: errors.error.message});
+      });
+  }
+
+  private navigateToHome(toastMessage) {
+    setTimeout(() => {
+      toastMessage.dismiss();
+      this.route.navigate(['/']);
+    }, 1000);
   }
 }

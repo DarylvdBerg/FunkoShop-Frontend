@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UserService} from '../../user/user.service';
 
 @Component({
@@ -6,13 +6,14 @@ import {UserService} from '../../user/user.service';
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss']
 })
-export class AdminPanelComponent implements OnInit {
+export class AdminPanelComponent implements OnInit, AfterViewInit {
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    console.log(this.userService.currentUser);
-    M.Tabs.init(document.querySelectorAll('.tabs'));
   }
 
+  ngAfterViewInit(): void {
+    M.Tabs.init(document.querySelectorAll('.tabs'));
+  }
 }

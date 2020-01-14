@@ -1,31 +1,59 @@
 <div class="container">
   <div class="col s12">
-    <div class="row center">
-      <h2>Login</h2>
+    <div class="row">
+      <h2 class="center">Registreren</h2>
       <form #form="ngForm" (ngSubmit)="onSubmit()">
-        <div class="input-field col s6 offset-s3">
-          <label for="name">Naam</label>
-          <input type="text" name="name" id="name" ngModel required #name="ngModel">
-          <div *ngIf="!name.valid && name.touched">
-            <span class="helper-text" *ngIf="name.errors.required">Naam is verplicht!</span>
+        <div class="col s12 l6">
+          <div class="input-field">
+            <label for="name">Naam</label>
+            <input type="text" name="name" id="name" ngModel required #name="ngModel">
+            <div *ngIf="!name.valid && name.touched">
+              <span class="helper-text" *ngIf="name.errors.required">Naam is verplicht!</span>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" ngModel required email #email='ngModel'>
+            <div *ngIf="!email.valid && email.touched">
+              <span class="helper-text" *ngIf="email.errors.required">Email is verplicht!</span>
+              <span class="helper-text" *ngIf="email.errors.email">Email is niet correct!</span>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="password">Wachtwoord</label>
+            <input type="password" name="password" id="password" ngModel required #password="ngModel">
+            <div *ngIf="!password.valid && password.touched">
+              <span class="helper-text" *ngIf="password.errors.required">Wachtwoord is verplicht!</span>
+            </div>
+          </div>
+          <div class="col s6 offset-s3 left-align">
           </div>
         </div>
-        <div class="input-field col s6 offset-s3">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" ngModel required email #email='ngModel'>
-          <div *ngIf="!email.valid && email.touched">
-            <span class="helper-text" *ngIf="email.errors.required">Email is verplicht!</span>
-            <span class="helper-text" *ngIf="email.errors.email">Email is niet correct!</span>
+        <div class="col s12 l6">
+          <div class="input-field">
+            <label for="streetAddress">Adres</label>
+            <input type="text" name="streetAddress" id="streetAddress" ngModel required #streetAddress="ngModel">
+            <div *ngIf="!streetAddress.valid && streetAddress.touched">
+              <span class="helper-text" *ngIf="streetAddress.errors.required">Adres is verplicht!</span>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="zipCode">Postcode</label>
+            <input type="text" name="zipCode" id="zipCode" ngModel required maxlength="6" #zipCode="ngModel">
+            <div *ngIf="!zipCode.valid && zipCode.touched">
+              <span class="helper-text" *ngIf="streetAddress.errors.required">Postcode is verplicht!</span>
+              <span class="helper-text" *ngIf="streetAddress.errors.maxlength">Postcode mag niet langer dan 6 tekens zijn!</span>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="district">Provincie</label>
+            <input type="text" id="district" name="district" ngModel required #district="ngModel">
+            <div *ngIf="!district.valid && district.touched">
+              <span class="helper-text" *ngIf="district.errors.required">Provincie is verplicht!</span>
+            </div>
           </div>
         </div>
-        <div class="input-field col s6 offset-s3">
-          <label for="password">Wachtwoord</label>
-          <input type="password" name="password" id="password" ngModel required #password="ngModel">
-          <div *ngIf="!password.valid && password.touched">
-            <span class="helper-text" *ngIf="password.errors.required">Wachtwoord is verplicht!</span>
-          </div>
-        </div>
-        <div class="col s6 offset-s3 left-align">
+        <div class="col s12">
           <button class="btn" [disabled]="!this.form.valid">Registreren</button>
         </div>
       </form>

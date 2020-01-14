@@ -21,9 +21,6 @@ export class LoginComponent implements OnInit {
       this.userService.currentUser = JSON.parse(currentUser);
       this.route.navigate(['']);
     }
-    // if (User.getCurrentUser() != null) {
-    //   this.route.navigate(['']);
-    // }
   }
 
   onSubmit() {

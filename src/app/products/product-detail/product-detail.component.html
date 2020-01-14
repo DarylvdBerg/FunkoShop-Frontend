@@ -2,16 +2,14 @@
   <div class="col s12">
     <div class="col s12 l4 center">
       <div class="row">
-        <div class="big-image" #bigImg>
+        <div #bigImg>
           <img class="responsive-img" [src]="this.getProductImage(product)" alt="{{product.name}}">
         </div>
-        <div class="small-images">
-          <ul>
-            <li *ngFor="let image of product.images; let i = index">
-              <img [src]="getProductImages(image)" class="img-list" alt="{{product.name}}" (click)="changeBigImage(i)">
-            </li>
-          </ul>
-        </div>
+        <ul>
+          <li *ngFor="let image of product.images; let i = index">
+            <img [src]="getProductImages(image)" class="img-list responsive-img" alt="{{product.name}}" (click)="changeBigImage(i)">
+          </li>
+        </ul>
       </div>
     </div>
     <div class="col s12 l8">

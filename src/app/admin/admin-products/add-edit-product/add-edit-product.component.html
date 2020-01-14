@@ -22,7 +22,7 @@
         <div class="input-field col s6 offset-s3">
           <label for="price">Prijs</label>
           <input type="number" id="price" name="price" [(ngModel)]="product.price" required
-                 pattern="[0-9]+.?[0-9]{0}"
+                 pattern="[0-9]+(\.[0-9][0-9]?)?"
           #priceField="ngModel">
           <div *ngIf="!priceField.valid && priceField.touched">
             <span class="helper-text" *ngIf="priceField.errors.required">Product prijs is verplicht</span>
