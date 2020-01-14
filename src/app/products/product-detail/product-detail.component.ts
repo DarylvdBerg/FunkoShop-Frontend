@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../product.model';
@@ -14,6 +14,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   product: Product = new Product();
   productSubscription: Subscription;
   routeSubscription: Subscription;
+  @ViewChild('bigImg', {static: true}) bigImg;
 
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute) { }
 
@@ -36,4 +37,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     return this.productService.getProductImage(images);
   }
 
+  getProductImage(product: Product) {
+    return this.productService.getProductImages(product);
+  }
+
+  changeBigImage(index: number) {
+    this.bigImg.nativeElement.children[0]
+      .setAttribute('src', this.getProductImages(this.product.images[index]));
+  }
 }

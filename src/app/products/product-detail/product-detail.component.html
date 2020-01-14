@@ -1,9 +1,20 @@
 <div class="row">
   <div class="col s12">
-    <div class="col s12 l7 center">
-      <img class="responsive-img" src="{{getProductImages(product.images[0])}}" alt="{{product.name}}">
+    <div class="col s12 l4 center">
+      <div class="row">
+        <div class="big-image" #bigImg>
+          <img class="responsive-img" [src]="this.getProductImage(product)" alt="{{product.name}}">
+        </div>
+        <div class="small-images">
+          <ul>
+            <li *ngFor="let image of product.images; let i = index">
+              <img [src]="getProductImages(image)" class="img-list" alt="{{product.name}}" (click)="changeBigImage(i)">
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col s12 l5">
+    <div class="col s12 l8">
       <div class="container">
         <div class="row">
           <h2>{{product.name}}</h2>
