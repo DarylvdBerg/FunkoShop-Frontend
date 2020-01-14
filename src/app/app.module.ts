@@ -11,6 +11,7 @@ import {HeaderComponent} from './header/header.component';
 import {UserModule} from './user/user.module';
 import {AdminModule} from './admin/admin.module';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import {CartModule} from './cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     AppRoutingModule,
     ProductsModule,
     AdminModule,
+    CartModule,
     UserModule,
     HttpClientModule,
     SweetAlert2Module.forRoot()

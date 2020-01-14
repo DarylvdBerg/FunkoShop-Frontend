@@ -13,13 +13,13 @@
     <ul class="right hide-on-med-and-down" *ngIf="user == null; else userLoggedIn">
       <li><a routerLink="/login">Login</a></li>
       <li><a routerLink="/register">Register</a></li>
-      <li><a href="#!"><i class="material-icons">shopping_basket</i></a></li>
+      <li><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
     </ul>
     <ng-template #userLoggedIn>
       <ul class="right hide-on-med-and-down">
         <li><a class="dropdown-trigger" href="#!" data-target="userDropdown">Beheer<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a routerLink="/" (click)="logout()">Uitloggen</a></li>
-        <li><a href="#!"><i class="material-icons">shopping_basket</i></a></li>
+        <li><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
       </ul>
     </ng-template>
   </div>
@@ -33,13 +33,13 @@
   <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
   <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
   <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
-  <li routerLinkActive="active"><a href="">Cart</a></li>
+  <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
 </ul>
 <ng-template #userLoggedInMobile>
   <ul class="sidenav" id="mobileNav">
     <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
     <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
     <li routerLinkActive="active"><a routerLink="/logout">Uitloggen</a></li>
-    <li routerLinkActive="active"><a href="">Cart</a></li>
+    <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
   </ul>
 </ng-template>

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../shared/api.service';
 import {HttpParams} from '@angular/common/http';
 import {User} from './user.model';
-import {zip} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

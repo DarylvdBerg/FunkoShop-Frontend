@@ -10,6 +10,10 @@ import {AdminComponent} from './admin/admin.component';
 import {AdminGuardService} from './guards/admin-guard.service';
 import {AddEditProductComponent} from './admin/admin-products/add-edit-product/add-product.component';
 import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
+import {CartComponent} from "./cart/cart.component";
+import {OrderComponent} from "./cart/order/order.component";
+import {CheckoutComponent} from "./cart/checkout/checkout.component";
+import {AuthenticatedGuard} from "./guards/authenticated-guard.service";
 
 
 const routes: Routes = [
@@ -26,6 +30,10 @@ const routes: Routes = [
       {path: 'product/toevoegen', component: AddEditProductComponent},
       {path: 'product/:id/aanpassen', component: AddEditProductComponent}
     ]},
+  {path: 'cart', component: CartComponent, canActivateChild: [AuthenticatedGuard], children: [
+      {path: 'order', component: OrderComponent},
+      {path: 'checkout', component: CheckoutComponent}
+    ]}
 ];
 
 @NgModule({
