@@ -17,6 +17,13 @@ export class ApiService {
     };
   }
 
+  private buildHeaderOptionsWithContentType(contentType: string) {
+    return {
+      headers: new HttpHeaders()
+        .set('Authorization', this.buildAuthHeader())
+    };
+  }
+
   private buildAuthHeader() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user == null) {
@@ -25,12 +32,19 @@ export class ApiService {
     return `Bearer ${user.authToken}`;
   }
 
+
+
   postRequest(url: string, data: HttpParams, authToken: boolean) {
     if (authToken) {
       const httpOptions = this.buildHeaderOptions();
       return this.http.post<any>(this.baseUrl + url, data, httpOptions);
     }
     return this.http.post<any>(this.baseUrl + url, data);
+  }
+
+  postJson(url: string, data: Object) {
+    const httpOptions = this.buildHeaderOptions();
+    return this.http.post<any>(this.baseUrl + url, data, httpOptions);
   }
 
   putRequest(url: string, data: HttpParams, authToken: boolean) {
@@ -49,7 +63,11 @@ export class ApiService {
     return this.http.post<any>(this.baseUrl + url, data);
   }
 
-  getRequest(url: string) {
+  getRequest(url: string, authToken: boolean) {
+    if (authToken) {
+      const httpOptions = this.buildHeaderOptions();
+      return this.http.get<any>(this.baseUrl + url, httpOptions);
+    }
     return this.http.get<any>(this.baseUrl + url);
   }
 

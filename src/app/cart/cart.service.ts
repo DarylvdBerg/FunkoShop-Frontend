@@ -14,12 +14,16 @@ export class CartService {
   }
 
   getProductsFromCart() {
-    this.products = JSON.parse(localStorage.getItem('car'));
+    this.products = JSON.parse(localStorage.getItem('cart'));
     return this.products;
   }
 
   removeProductFromCart(index: number) {
     this.products.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(this.products));
+  }
+
+  clearCart() {
+    localStorage.removeItem('cart');
   }
 }

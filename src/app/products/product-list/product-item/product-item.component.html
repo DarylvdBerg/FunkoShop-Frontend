@@ -10,6 +10,6 @@
   </div>
   <div class="card-action">
     <a routerLink="/producten/{{product.id}}">To product page</a>
-    <a>Add to card</a>
+    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">Add to card</a>
   </div>
 </div>

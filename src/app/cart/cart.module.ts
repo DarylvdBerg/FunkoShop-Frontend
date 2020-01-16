@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart.component';
 import {RouterModule} from '@angular/router';
 import { OrderComponent } from './order/order.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
 @NgModule({
-  declarations: [CartComponent, OrderComponent, CheckoutComponent],
+  declarations: [CartComponent, OrderComponent],
   imports: [
     CommonModule,
     RouterModule

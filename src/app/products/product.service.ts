@@ -3,7 +3,7 @@ import {ApiService} from '../shared/api.service';
 import {Product} from './product.model';
 import {Image} from './image.model';
 import {Subject} from 'rxjs';
-import {HttpParams} from "@angular/common/http";
+import {HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ProductService {
 
   getProducts() {
     const productSubject = new Subject<Product[]>();
-    this.api.getRequest('product/all')
+    this.api.getRequest('product/all', false)
       .subscribe(response => {
         const product = response.content as Product[];
         productSubject.next(product);
@@ -23,13 +23,9 @@ export class ProductService {
     return productSubject;
   }
 
-  // getProduct(id: number) {
-  //   return this.api.getRequest('product/' + id + '/');
-  // }
-
   getProduct(id: number) {
     const productSubject = new Subject<Product>();
-    this.api.getRequest('product/' + id + '/')
+    this.api.getRequest('product/' + id + '/', false)
       .subscribe(response => {
         const product = response.content as Product;
         productSubject.next(product);

@@ -6,11 +6,12 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import {FormsModule} from '@angular/forms';
 import {AddEditProductComponent} from './admin-products/add-edit-product/add-product.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminProductsComponent, AddEditProductComponent, AdminPanelComponent],
+  declarations: [AdminComponent, AdminProductsComponent, AddEditProductComponent, AdminPanelComponent, AdminOrdersComponent],
     imports: [
         CommonModule,
         RouterModule,

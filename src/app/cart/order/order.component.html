@@ -1,1 +1,31 @@
-<p>order works!</p>
+<div class="container">
+  <div class="col s12">
+    <div class="row">
+      <div class="col s12" *ngIf="products.length <= 0; else hasProducts">
+        <p class="center no-products">Geen producten in het winkelmandje!</p>
+      </div>
+      <ng-template #hasProducts>
+        <div class="col s12" *ngFor="let product of products; let i = index; let last = last">
+          <div class="valign-wrapper">
+            <div class="col s3">
+              <img class="responsive-img small-image" [src]="this.getProductImage(product.images[0])" alt="{{product.name}}">
+            </div>
+            <div class="col s3">
+              <p class="cart-text">{{product.name}}</p>
+            </div>
+            <div class="col s3">
+              <p class="cart-text">&euro;{{product.price}}</p>
+            </div>
+            <div class="col s3">
+              <button class="btn" (click)="this.removeFromCart(i)">Verwijder uit winkelmand</button>
+            </div>
+          </div>
+          <div *ngIf="!last" class="divider"></div>
+        </div>
+        <div class="col s12">
+          <button class="btn right" (click)="checkOutOrder()">Checkout</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

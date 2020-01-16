@@ -5,9 +5,6 @@
         <li class="tab col s3">
           <a href="#producten">Producten</a>
         </li>
-        <li class="tab col s3" [className]="userService.currentUser.privilege >= 2 ? 'tab col s3' : 'hide'">
-          <a href="#users">Gebruikers</a>
-        </li>
         <li [className]="userService.currentUser.privilege >= 2 ? 'tab col s3' : 'hide'">
           <a href="#orders">Bestellingen</a>
         </li>
@@ -16,11 +13,8 @@
     <div id="producten" class="col s12">
       <app-admin-products></app-admin-products>
     </div>
-    <div id="users" class="col s12">
-      <p>Users</p>
-    </div>
     <div id="orders" class="col s12">
-      <p>Orders</p>
+      <app-admin-orders></app-admin-orders>
     </div>
   </div>
 </div>
