@@ -10,7 +10,7 @@
         <a routerLink="/producten/lijst">Producten</a>
       </li>
     </ul>
-    <ul class="right hide-on-med-and-down" *ngIf="user == null; else userLoggedIn">
+    <ul class="right hide-on-med-and-down" *ngIf="this.userService.currentUser == null; else userLoggedIn">
       <li><a routerLink="/login">Login</a></li>
       <li><a routerLink="/register">Register</a></li>
       <li><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
@@ -26,9 +26,9 @@
 </nav>
 <ul id="userDropdown" class="dropdown-content">
   <li><a href="">Profiel</a></li>
-  <li *ngIf="user != null && user.privilege >= 1"><a routerLink="/admin/paneel">Admin</a></li>
+  <li *ngIf="this.userService.currentUser != null && this.userService.currentUser.privilege >= 1"><a routerLink="/admin/paneel">Admin</a></li>
 </ul>
-<ul class="sidenav" id="mobileNav" *ngIf="user == null; else userLoggedInMobile">
+<ul class="sidenav" id="mobileNav" *ngIf="this.userService.currentUser == null; else userLoggedInMobile">
   <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
   <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
   <li routerLinkActive="active"><a routerLink="/login">Login</a></li>

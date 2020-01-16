@@ -10,7 +10,6 @@ import {UserService} from '../user/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  user: User;
   constructor(private route: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -19,13 +18,11 @@ export class HeaderComponent implements OnInit {
       M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false});
     });
 
-    if (localStorage.getItem('user') != null ) {
-      this.user = JSON.parse(localStorage.getItem('user'));
-    }
   }
 
   logout() {
     localStorage.removeItem('user');
+    this.userService.currentUser = null;
     const toast = M.toast({html: 'Gebruiker is uitgelogd!'});
     setTimeout(() => {
       toast.dismiss();
