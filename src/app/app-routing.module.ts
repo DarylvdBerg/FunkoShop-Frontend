@@ -13,6 +13,7 @@ import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
 import {CartComponent} from './cart/cart.component';
 import {OrderComponent} from './cart/order/order.component';
 import {AuthenticatedGuard} from './guards/authenticated-guard.service';
+import {ProfileComponent} from './user/profile/profile.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
     ]},
   {path: 'cart', component: CartComponent, canActivateChild: [AuthenticatedGuard], children: [
       {path: 'order', component: OrderComponent},
-    ]}
+    ]},
+  {path: 'profiel', component: ProfileComponent, canActivate: [AuthenticatedGuard]}
 ];
 
 @NgModule({

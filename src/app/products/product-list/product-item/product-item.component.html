@@ -9,7 +9,7 @@
     <p style="font-style: italic">&euro; {{product.price}}</p>
   </div>
   <div class="card-action">
-    <a routerLink="/producten/{{product.id}}">To product page</a>
-    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">Add to card</a>
+    <a routerLink="/producten/{{product.id}}">Product pagina</a>
+    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">In winkelmandje</a>
   </div>
 </div>

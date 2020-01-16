@@ -17,6 +17,10 @@ export class OrderService {
   }
 
   getAllOrders() {
-    return this.apiService.getRequest('order/all', true)
+    return this.apiService.getRequest('order/all', true);
+  }
+
+  getUserOrders(id: number) {
+    return this.apiService.getRequest('order/' + id, true);
   }
 }

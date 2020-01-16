@@ -20,7 +20,4 @@ export class AdminOrdersComponent implements OnInit {
       });
   }
 
-  convertToDate(orderDate) {
-  }
-
 }

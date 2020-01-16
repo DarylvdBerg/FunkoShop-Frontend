@@ -11,6 +11,7 @@ import {Subscription} from 'rxjs';
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[];
   productSubscription: Subscription;
+  searchTerm: string;
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
@@ -22,6 +23,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.productSubscription.unsubscribe();
+  }
+
+  filterProducts(searchTerm: string) {
+    return this.products.filter(product => {
+      const text = product.name.toLowerCase();
+      return text.indexOf(this.searchTerm.toLowerCase()) > -1;
+    });
   }
 
 }

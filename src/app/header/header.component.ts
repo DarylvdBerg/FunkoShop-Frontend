@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import * as M from 'materialize-css';
 import {User} from '../user/user.model';
 import {Router} from '@angular/router';
@@ -9,15 +9,24 @@ import {UserService} from '../user/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   constructor(private route: Router, private userService: UserService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user') != null) {
+      this.userService.currentUser = JSON.parse(localStorage.getItem('user'));
+    }
     document.addEventListener('DOMContentLoaded', () => {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
       M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false});
     });
+  }
 
+  ngAfterViewInit(): void {
+    document.addEventListener('DOMContentLoaded', () => {
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
+      M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false});
+    });
   }
 
   logout() {

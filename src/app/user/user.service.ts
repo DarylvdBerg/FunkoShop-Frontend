@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../shared/api.service';
 import {HttpParams} from '@angular/common/http';
 import {User} from './user.model';
+import {UserAddress} from "./userAddress.model";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +35,16 @@ export class UserService {
       .set('zip_code', zipCode)
       .set('district', district);
     return this.api.postRequest('address/create', params, false);
+  }
+
+  getUserAddressInfo() {
+    const userAddressSubject = new Subject<UserAddress>();
+    this.api.getRequest('address/' + this.currentUser.id, true)
+      .subscribe(response => {
+        const address = response.content as UserAddress;
+        userAddressSubject.next(address);
+        userAddressSubject.complete();
+      });
+    return userAddressSubject;
   }
 }

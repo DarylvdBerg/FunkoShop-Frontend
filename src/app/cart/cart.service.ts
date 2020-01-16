@@ -5,7 +5,16 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  products: Product[] = JSON.parse(localStorage.getItem('cart'));
+  products: Product[];
+  totalPrice: number;
+
+  constructor() {
+    if (localStorage.getItem('cart') != null) {
+      this.products = JSON.parse(localStorage.getItem('cart'));
+    } else {
+      this.products = [];
+    }
+  }
 
   addProductToCart(product: Product) {
     this.products.push(product);

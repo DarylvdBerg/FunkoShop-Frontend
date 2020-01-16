@@ -25,7 +25,7 @@
   </div>
 </nav>
 <ul id="userDropdown" class="dropdown-content">
-  <li><a href="">Profiel</a></li>
+  <li><a routerLink="profiel">Profiel</a></li>
   <li *ngIf="this.userService.currentUser != null && this.userService.currentUser.privilege >= 1"><a routerLink="/admin/paneel">Admin</a></li>
 </ul>
 <ul class="sidenav" id="mobileNav" *ngIf="this.userService.currentUser == null; else userLoggedInMobile">
