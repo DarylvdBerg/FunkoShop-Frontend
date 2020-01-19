@@ -15,7 +15,6 @@ export class UserOrdersComponent implements OnInit {
   ngOnInit() {
     this.orderService.getUserOrders(this.userService.currentUser.id)
       .subscribe((orders) => {
-        console.log(orders);
         this.orders = orders.content;
       });
   }

@@ -10,36 +10,27 @@
         <a routerLink="/producten/lijst">Producten</a>
       </li>
     </ul>
-    <ul class="right hide-on-med-and-down" *ngIf="this.userService.currentUser == null; else userLoggedIn">
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/register">Register</a></li>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="userService.currentUser == null"><a routerLink="/login">Login</a></li>
+      <li *ngIf="userService.currentUser == null"><a routerLink="/register">Register</a></li>
+      <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1">
+        <a class="dropdown-trigger" href="#!" data-target="userDropdown">Admin</a>
+      </li>
+      <li><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
+      <li *ngIf="userService.currentUser != null"><a routerLink="/" (click)="logout()">Uitloggen</a></li>
       <li><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
     </ul>
-    <ng-template #userLoggedIn>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="dropdown-trigger" href="#!" data-target="userDropdown">Beheer<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a routerLink="/" (click)="logout()">Uitloggen</a></li>
-        <li><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
-      </ul>
-    </ng-template>
   </div>
 </nav>
-<ul id="userDropdown" class="dropdown-content">
-  <li><a routerLink="profiel">Profiel</a></li>
-  <li *ngIf="this.userService.currentUser != null && this.userService.currentUser.privilege >= 1"><a routerLink="/admin/paneel">Admin</a></li>
-</ul>
-<ul class="sidenav" id="mobileNav" *ngIf="this.userService.currentUser == null; else userLoggedInMobile">
+<ul class="sidenav" id="mobileNav">
   <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
   <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
-  <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-  <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+  <li routerLinkActive="active" *ngIf="userService.currentUser == null"><a routerLink="/login">Login</a></li>
+  <li routerLinkActive="active" *ngIf="userService.currentUser == null"><a routerLink="/register">Register</a></li>
+  <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1">
+    <a class="dropdown-trigger" href="#!" data-target="userDropdown">Admin</a>
+  </li>
+  <li><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
+  <li *ngIf="userService.currentUser != null"><a routerLink="/" (click)="logout()">Uitloggen</a></li>
   <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
 </ul>
-<ng-template #userLoggedInMobile>
-  <ul class="sidenav" id="mobileNav">
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-    <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
-    <li routerLinkActive="active"><a routerLink="/logout">Uitloggen</a></li>
-    <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
-  </ul>
-</ng-template>

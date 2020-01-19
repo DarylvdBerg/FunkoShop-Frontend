@@ -47,4 +47,19 @@ export class UserService {
       });
     return userAddressSubject;
   }
+
+  changePassword(oldPassword: string, password: string) {
+    const params = new HttpParams()
+      .set('oldPassword', oldPassword)
+      .set('password', password);
+    return this.api.putRequest('users/changePassword/' + this.currentUser.id, params, true);
+  }
+
+  changeUserAddressInfo(address: UserAddress) {
+    const params = new HttpParams()
+      .set('street_address', address.streetAdres)
+      .set('zip_code', address.zipCode)
+      .set('district', address.district);
+    return this.api.putRequest('address/update/' + this.currentUser.id, params, true);
+  }
 }

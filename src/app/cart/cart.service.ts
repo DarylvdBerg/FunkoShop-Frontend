@@ -6,7 +6,6 @@ import {Injectable} from '@angular/core';
 })
 export class CartService {
   products: Product[];
-  totalPrice: number;
 
   constructor() {
     if (localStorage.getItem('cart') != null) {

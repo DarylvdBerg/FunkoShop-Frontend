@@ -16,16 +16,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     if (localStorage.getItem('user') != null) {
       this.userService.currentUser = JSON.parse(localStorage.getItem('user'));
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
-      M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false});
     });
   }
 
   ngAfterViewInit(): void {
     document.addEventListener('DOMContentLoaded', () => {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
-      M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false});
     });
   }
 
