@@ -72,7 +72,7 @@ export class ProductService {
   }
 
   deleteProduct(id: number) {
-    return this.api.deleteRequest(`product/delete/${id}`, true);
+    return this.api.deleteRequest(`product/delete/${id}`);
   }
 
 }

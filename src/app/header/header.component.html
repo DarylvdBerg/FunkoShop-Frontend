@@ -11,14 +11,14 @@
       </li>
     </ul>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="userService.currentUser == null"><a routerLink="/login">Login</a></li>
-      <li *ngIf="userService.currentUser == null"><a routerLink="/register">Register</a></li>
-      <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1">
-        <a class="dropdown-trigger" href="#!" data-target="userDropdown">Admin</a>
+      <li *ngIf="userService.currentUser == null" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+      <li *ngIf="userService.currentUser == null" routerLinkActive="active"><a routerLink="/register">Register</a></li>
+      <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1" routerLinkActive="active">
+        <a routerLink="admin/paneel">Admin</a>
       </li>
-      <li><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
+      <li routerLinkActive="active"><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
       <li *ngIf="userService.currentUser != null"><a routerLink="/" (click)="logout()">Uitloggen</a></li>
-      <li><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
+      <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
     </ul>
   </div>
 </nav>
@@ -27,10 +27,10 @@
   <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
   <li routerLinkActive="active" *ngIf="userService.currentUser == null"><a routerLink="/login">Login</a></li>
   <li routerLinkActive="active" *ngIf="userService.currentUser == null"><a routerLink="/register">Register</a></li>
-  <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1">
-    <a class="dropdown-trigger" href="#!" data-target="userDropdown">Admin</a>
+  <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1" routerLinkActive="active">
+    <a routerLink="admin/paneel">Admin</a>
   </li>
-  <li><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
+  <li routerLinkActive="active"><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
   <li *ngIf="userService.currentUser != null"><a routerLink="/" (click)="logout()">Uitloggen</a></li>
   <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
 </ul>

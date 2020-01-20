@@ -4,12 +4,12 @@
   </div>
   <div class="card-content">
     <h3 class="card-title">{{product.name}}</h3>
-    <p>{{product.description}}</p>
+    <p class="description">{{product.description}}</p>
     <div class="divider"></div>
     <p style="font-style: italic">&euro; {{product.price}}</p>
   </div>
   <div class="card-action">
-    <a routerLink="/producten/{{product.id}}">Product pagina</a>
-    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">In winkelmandje</a>
+    <a routerLink="/producten/{{product.id}}">Details</a>
+    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">In winkelmand</a>
   </div>
 </div>

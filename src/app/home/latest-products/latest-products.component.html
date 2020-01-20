@@ -3,17 +3,12 @@
     <img class="responsive-img" [src]="getProductImage(product)" alt="{{product.name}}">
   </div>
   <div class="card-content">
-    <h3 class="card-title">{{product.name}}</h3>
-    <p>{{product.description}}</p>
+    <h5 class="card-title">{{product.name}}</h5>
     <div class="divider"></div>
-    <p style="font-style: italic">&euro; {{product.price}}</p>
+    <p style="font-style: italic; font-size: 18px;">&euro; {{product.price}}</p>
   </div>
   <div class="card-action">
-    <div class="row">
-      <div class="col s12">
-        <a href="#" class="btn-flat" [routerLink]="['/producten/',product.id]">Product pagina</a>
-        <a class="btn-flat" (click)="this.cartService.addProductToCart(product)">In winkelmandje</a>
-      </div>
-    </div>
+    <a [routerLink]="['/producten/',product.id]">Details</a>
+    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">In winkelmand</a>
   </div>
 </div>

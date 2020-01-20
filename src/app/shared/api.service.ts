@@ -13,29 +13,12 @@ export class ApiService {
   private buildHeaderOptions() {
     return  {
       headers: new HttpHeaders()
-        .set('Authorization', this.buildAuthHeader())
+        .set('no-token', 'no-token')
     };
   }
-
-  private buildHeaderOptionsWithContentType(contentType: string) {
-    return {
-      headers: new HttpHeaders()
-        .set('Authorization', this.buildAuthHeader())
-    };
-  }
-
-  private buildAuthHeader() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user == null) {
-      return '';
-    }
-    return `Bearer ${user.authToken}`;
-  }
-
-
 
   postRequest(url: string, data: HttpParams, authToken: boolean) {
-    if (authToken) {
+    if (!authToken) {
       const httpOptions = this.buildHeaderOptions();
       return this.http.post<any>(this.baseUrl + url, data, httpOptions);
     }
@@ -43,43 +26,38 @@ export class ApiService {
   }
 
   postJson(url: string, data: Object) {
-    const httpOptions = this.buildHeaderOptions();
-    return this.http.post<any>(this.baseUrl + url, data, httpOptions);
+    return this.http.post<any>(this.baseUrl + url, data);
   }
 
   putRequest(url: string, data: HttpParams, authToken: boolean) {
     if (authToken) {
-      const httpOptions = this.buildHeaderOptions();
-      return this.http.put<any>(this.baseUrl + url, data, httpOptions);
+      return this.http.put<any>(this.baseUrl + url, data);
     }
-    return this.http.put<any>(this.baseUrl + url, data);
+    const httpOptions = this.buildHeaderOptions();
+    return this.http.put<any>(this.baseUrl + url, data, httpOptions);
   }
 
   postMultipartRequest(url: string, data: FormData, authToken: boolean) {
     if (authToken) {
-      const httpOptions = this.buildHeaderOptions();
-      return this.http.post<any>(this.baseUrl + url, data, httpOptions);
+      return this.http.post<any>(this.baseUrl + url, data);
     }
-    return this.http.post<any>(this.baseUrl + url, data);
+    const httpOptions = this.buildHeaderOptions();
+    return this.http.post<any>(this.baseUrl + url, data, httpOptions);
   }
 
   getRequest(url: string, authToken: boolean) {
     if (authToken) {
-      const httpOptions = this.buildHeaderOptions();
-      return this.http.get<any>(this.baseUrl + url, httpOptions);
+      return this.http.get<any>(this.baseUrl + url);
     }
-    return this.http.get<any>(this.baseUrl + url);
+    const httpOptions = this.buildHeaderOptions();
+    return this.http.get<any>(this.baseUrl + url, httpOptions);
   }
 
-  deleteRequest(url: string, authToken: boolean) {
-    if (authToken) {
-      return this.http.delete<any>(this.baseUrl + url, this.buildHeaderOptions());
-    }
-    return this.http.delete<any>(this.baseUrl + url, this.buildHeaderOptions());
+  deleteRequest(url: string) {
+    return this.http.delete<any>(this.baseUrl + url);
   }
 
   getImageUrl(image: Image) {
-    // return '${{this.baseUrl}/images/${image.id}';
     return this.baseUrl + 'images/' + image.id;
   }
 }

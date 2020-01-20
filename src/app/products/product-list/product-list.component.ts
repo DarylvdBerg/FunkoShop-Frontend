@@ -10,14 +10,15 @@ import {Subscription} from 'rxjs';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[];
+  filteredProducts: Product[];
   productSubscription: Subscription;
-  searchTerm: string;
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.productSubscription = this.productService.getProducts()
       .subscribe(products => {
         this.products = products;
+        this.filteredProducts = this.products;
       });
   }
 
@@ -25,11 +26,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.productSubscription.unsubscribe();
   }
 
-  filterProducts(searchTerm: string) {
-    return this.products.filter(product => {
-      const text = product.name.toLowerCase();
-      return text.indexOf(this.searchTerm.toLowerCase()) > -1;
-    });
+  filterProducts(value) {
+    if (!value) {
+      this.filteredProducts = this.products;
+    } else {
+      this.filteredProducts = this.products.filter(product => {
+        const text = product.name.toLowerCase();
+        return text.indexOf(value.toLowerCase()) > -1;
+      });
+    }
   }
 
 }
