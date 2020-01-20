@@ -6,7 +6,7 @@ import {Image} from '../../products/image.model';
 import {OrderService} from '../../shared/order.service';
 import {Cart} from '../cart.model';
 import {User} from '../../user/user.model';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -14,13 +14,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  products: Product[];
 
   constructor(private cartService: CartService, private productService: ProductService,
               private orderService: OrderService, private route: Router) { }
 
   ngOnInit() {
-    this.products = this.cartService.getProductsFromCart();
   }
 
   getProductImage(image: Image) {
@@ -29,12 +27,12 @@ export class OrderComponent implements OnInit {
 
   removeFromCart(index: number) {
     this.cartService.removeProductFromCart(index);
-    const name = this.products[index].name;
+    const name = this.cartService.products[index].name;
     M.toast({html: name + ' verwijderd uit het winkelmandje'});
   }
 
   checkOutOrder() {
-    const products = this.products;
+    const products = this.cartService.products;
     const cart: Cart[] = [];
 
     const user = JSON.parse(localStorage.getItem('user')) as User;
