@@ -13,6 +13,8 @@ import {AdminModule} from './admin/admin.module';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import {CartModule} from './cart/cart.module';
 import {AuthInterceptor} from './shared/auth.interceptor';
+import {ResponseInterceptor} from './shared/response.interceptor';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,15 +25,17 @@ import {AuthInterceptor} from './shared/auth.interceptor';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     ProductsModule,
     AdminModule,
     CartModule,
-    UserModule,
     HttpClientModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    UserModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

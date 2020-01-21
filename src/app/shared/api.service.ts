@@ -18,11 +18,11 @@ export class ApiService {
   }
 
   postRequest(url: string, data: HttpParams, authToken: boolean) {
-    if (!authToken) {
-      const httpOptions = this.buildHeaderOptions();
-      return this.http.post<any>(this.baseUrl + url, data, httpOptions);
+    if (authToken) {
+      return this.http.post<any>(this.baseUrl + url, data);
     }
-    return this.http.post<any>(this.baseUrl + url, data);
+    const httpOptions = this.buildHeaderOptions();
+    return this.http.post<any>(this.baseUrl + url, data, httpOptions);
   }
 
   postJson(url: string, data: Object) {

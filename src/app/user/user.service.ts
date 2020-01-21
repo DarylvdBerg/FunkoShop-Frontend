@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../shared/api.service';
 import {HttpParams} from '@angular/common/http';
 import {User} from './user.model';
-import {UserAddress} from "./userAddress.model";
-import {Subject} from "rxjs";
+import {UserAddress} from './userAddress.model';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +61,14 @@ export class UserService {
       .set('zip_code', address.zipCode)
       .set('district', address.district);
     return this.api.putRequest('address/update/' + this.currentUser.id, params, true);
+  }
+
+  setNewAuthToken(authToken: string) {
+    this.currentUser.authToken = authToken;
+    localStorage.setItem('user', JSON.stringify(this.currentUser));
+  }
+
+  isUserPresent() {
+    return (this.currentUser != null && localStorage.getItem('user') != null);
   }
 }

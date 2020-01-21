@@ -7,13 +7,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserInfoComponent } from './profile/user-info/user-info.component';
 import { UserOrdersComponent } from './profile/user-orders/user-orders.component';
 
-
-
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, ProfileComponent, UserInfoComponent, UserOrdersComponent],
   imports: [
     CommonModule,
     FormsModule
-  ]
+  ],
 })
 export class UserModule { }
