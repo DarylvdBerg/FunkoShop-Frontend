@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col s12">
+    <a routerLink="/admin/product/toevoegen" class="btn">Toevoegen</a>
+  </div>
+  <div class="col s12">
+    <table>
+      <thead>
+      <tr>
+        <th>Naam</th>
+        <th>Description</th>
+        <th>Prijs</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products;">
+          <td>{{product.name}}</td>
+          <td>{{shortenProductDescription(product.description)}}</td>
+          <td>&euro;{{product.price}}</td>
+          <td><a routerLink="/admin/product/{{product.id}}/aanpassen" class="btn btn-edit">Aanpassen</a></td>
+          <td><a (click)="deleteProduct(product)" class="btn btn-delete">Verwijderen</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

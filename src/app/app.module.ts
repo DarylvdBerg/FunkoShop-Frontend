@@ -4,13 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ProductsModule} from './products/products.module';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { LatestProductsComponent } from './home/latest-products/latest-products.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {LatestProductsComponent} from './home/latest-products/latest-products.component';
+import {HomeComponent} from './home/home.component';
+import {HeaderComponent} from './header/header.component';
+import {UserModule} from './user/user.module';
+import {AdminModule} from './admin/admin.module';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import {CartModule} from './cart/cart.module';
+import {AuthInterceptor} from './shared/auth.interceptor';
+import {ResponseInterceptor} from './shared/response.interceptor';
 import {SharedModule} from './shared/shared.module';
-import {ApiService} from './shared/api.service';
-import {HttpClientModule} from '@angular/common/http';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +22,20 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
     HeaderComponent,
     HomeComponent,
     LatestProductsComponent,
-    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     ProductsModule,
-    HttpClientModule
+    AdminModule,
+    CartModule,
+    HttpClientModule,
+    SweetAlert2Module.forRoot(),
+    UserModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

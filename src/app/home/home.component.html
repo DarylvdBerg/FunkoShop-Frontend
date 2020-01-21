@@ -7,9 +7,14 @@
   <hr>
 </div>
 <div class="container">
+  <div class="row center">
+    <div class="col s12">
+      <h3>Laatste Funko's!</h3>
+    </div>
+  </div>
   <div class="row">
-    <app-latest-products *ngFor="let product of products" [product]="product" class="col s12 l4">
+      <app-latest-products *ngFor="let product of products" [product]="product" class="col s12 m6 l4">
 
-    </app-latest-products>
+      </app-latest-products>
   </div>
 </div>

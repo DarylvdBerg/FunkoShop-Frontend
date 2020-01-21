@@ -6,5 +6,5 @@ export class Product {
     public description: string;
     public images: Image[];
     public price: number;
-    public amount: number;
+    constructor() {}
 }

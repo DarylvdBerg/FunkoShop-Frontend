@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col s12">
       <div class="input-field col s6 offset-s3">
-        <input id="searchBar" type="text">
+        <input id="searchBar" #myInput (input)="filterProducts(myInput.value)" type="text">
         <label for="searchBar">Search...</label>
         <i class="material-icons prefix">search</i>
       </div>
@@ -10,10 +10,9 @@
   </div>
   <div class="divider"></div>
   <div class="row">
-    <app-product-item class="col s12 m6 l4"
-    *ngFor="let productEl of products"
+    <app-product-item class="col s12 m6 l3"
+    *ngFor="let productEl of this.filteredProducts"
     [product]="productEl">
     </app-product-item>
   </div>
 </div>
-<!-- Product comes here -->

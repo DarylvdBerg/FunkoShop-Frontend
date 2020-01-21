@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="col s12 center">
+    <div class="row">
+      <h3>Product {{action}}</h3>
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="input-field col s6 offset-s3">
+          <label for="name">Naam</label>
+          <input type="text" id="name" name="name" [(ngModel)]="product.name" required #productField="ngModel">
+          <div *ngIf="!productField.valid && productField.touched">
+            <span *ngIf="productField.errors.required">Product naam is verplicht!</span>
+          </div>
+        </div>
+        <div class="input-field col s6 offset-s3">
+          <label for="description">Beschrijving</label>
+          <textarea  class="materialize-textarea" id="description" name="description" required #descField="ngModel"
+                 data-length="256"
+                 [(ngModel)]="product.description"></textarea>
+          <div *ngIf="!descField.valid && descField.touched">
+            <span *ngIf="descField.errors.required">Product beschrijving is verplicht!</span>
+          </div>
+        </div>
+        <div class="input-field col s6 offset-s3">
+          <label for="price">Prijs</label>
+          <input type="number" id="price" name="price" [(ngModel)]="product.price" required
+                 pattern="[0-9]+(\.[0-9][0-9]?)?"
+          #priceField="ngModel">
+          <div *ngIf="!priceField.valid && priceField.touched">
+            <span class="helper-text" *ngIf="priceField.errors.required">Product prijs is verplicht</span>
+            <span class="helper-text" *ngIf="priceField.errors.pattern">Product prijs mag alleen cijfers bevatten</span>
+          </div>
+        </div>
+        <div class="file-field input-field col s6 offset-s3">
+          <label for="images">Afbeeldingen</label>
+          <input type="file" multiple name="images" id="images" accept="images/*" [(ngModel)]="product.images"
+          (change)="filesSelected($event.target.files)">
+          <input class="file-path" type="text">
+        </div>
+        <div class="col s12">
+          <div class="row center">
+            <div class="col s4" *ngFor="let image of previewFilesList; let i = index">
+              <img [src]="image"  height="300px" alt="Preview">
+              <div class="row">
+                <a (click)="removeImageFromList(i)" style="cursor: pointer">Verwijder afbeelding</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s6 offset-s3 left-align">
+          <button class="btn" [disabled]="!this.form.valid">{{action}}</button>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <a routerLink="/admin/paneel">Naar admin paneel</a>
+    </div>
+  </div>
+</div>

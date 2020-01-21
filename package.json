@@ -19,14 +19,16 @@
     "@angular/platform-browser": "~8.2.8",
     "@angular/platform-browser-dynamic": "~8.2.8",
     "@angular/router": "~8.2.8",
+    "@sweetalert2/ngx-sweetalert2": "^7.2.0",
     "@types/materialize-css": "^1.0.7",
     "materialize-css": "^1.0.0-rc.2",
     "rxjs": "~6.4.0",
+    "sweetalert2": "^9.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.20",
+    "@angular-devkit/build-angular": "^0.803.22",
     "@angular/cli": "^8.3.20",
     "@angular/compiler-cli": "~8.2.8",
     "@angular/language-service": "~8.2.8",
