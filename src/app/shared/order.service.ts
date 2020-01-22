@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
-import {HttpParams} from '@angular/common/http';
-import {User} from '../user/user.model';
 import {Cart} from '../cart/cart.model';
 
 @Injectable ({
@@ -17,10 +15,10 @@ export class OrderService {
   }
 
   getAllOrders() {
-    return this.apiService.getRequest('order/all', true);
+    return this.apiService.getRequest('order/all');
   }
 
   getUserOrders(id: number) {
-    return this.apiService.getRequest('order/' + id, true);
+    return this.apiService.getRequest('order/' + id);
   }
 }

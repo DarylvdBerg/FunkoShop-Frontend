@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Image} from '../products/image.model';
 import {environment} from '../../environments/environment';
 
@@ -10,47 +10,24 @@ export class ApiService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  private buildHeaderOptions() {
-    return  {
-      headers: new HttpHeaders()
-        .set('no-token', 'no-token')
-    };
-  }
-
-  postRequest(url: string, data: HttpParams, authToken: boolean) {
-    if (authToken) {
+  postRequest(url: string, data: HttpParams) {
       return this.http.post<any>(this.baseUrl + url, data);
-    }
-    const httpOptions = this.buildHeaderOptions();
-    return this.http.post<any>(this.baseUrl + url, data, httpOptions);
   }
 
-  postJson(url: string, data: Object) {
+  postJson(url: string, data: any) {
     return this.http.post<any>(this.baseUrl + url, data);
   }
 
-  putRequest(url: string, data: HttpParams, authToken: boolean) {
-    if (authToken) {
+  putRequest(url: string, data: HttpParams) {
       return this.http.put<any>(this.baseUrl + url, data);
-    }
-    const httpOptions = this.buildHeaderOptions();
-    return this.http.put<any>(this.baseUrl + url, data, httpOptions);
   }
 
-  postMultipartRequest(url: string, data: FormData, authToken: boolean) {
-    if (authToken) {
+  postMultipartRequest(url: string, data: FormData) {
       return this.http.post<any>(this.baseUrl + url, data);
-    }
-    const httpOptions = this.buildHeaderOptions();
-    return this.http.post<any>(this.baseUrl + url, data, httpOptions);
   }
 
-  getRequest(url: string, authToken: boolean) {
-    if (authToken) {
+  getRequest(url: string) {
       return this.http.get<any>(this.baseUrl + url);
-    }
-    const httpOptions = this.buildHeaderOptions();
-    return this.http.get<any>(this.baseUrl + url, httpOptions);
   }
 
   deleteRequest(url: string) {

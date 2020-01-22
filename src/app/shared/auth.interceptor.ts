@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private userService: UserService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if ((req.headers.get('no-token') == null && req.headers.get('no-token') !== 'no-token') || this.userService.isUserPresent()) {
+    if (this.userService.isUserPresent()) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${this.userService.currentUser.authToken}`
