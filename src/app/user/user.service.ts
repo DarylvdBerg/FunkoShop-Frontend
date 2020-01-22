@@ -17,7 +17,7 @@ export class UserService {
     const params = new HttpParams()
       .set('email', email)
       .set('password', password);
-    return this.api.postRequest('users/login', params, false);
+    return this.api.postRequest('users/login', params);
   }
 
   register(name: string, email: string, password: string) {
@@ -25,7 +25,7 @@ export class UserService {
       .set('name', name)
       .set('email', email)
       .set('password', password);
-    return this.api.postRequest('users/register', params, false);
+    return this.api.postRequest('users/register', params);
   }
 
   registerAddress(userId: number, streetAddress: string, zipCode: string, district: string) {
@@ -34,12 +34,12 @@ export class UserService {
       .set('street_address', streetAddress)
       .set('zip_code', zipCode)
       .set('district', district);
-    return this.api.postRequest('address/create', params, false);
+    return this.api.postRequest('address/create', params);
   }
 
   getUserAddressInfo() {
     const userAddressSubject = new Subject<UserAddress>();
-    this.api.getRequest('address/' + this.currentUser.id, true)
+    this.api.getRequest('address/' + this.currentUser.id)
       .subscribe(response => {
         const address = response.content as UserAddress;
         userAddressSubject.next(address);
@@ -52,7 +52,7 @@ export class UserService {
     const params = new HttpParams()
       .set('oldPassword', oldPassword)
       .set('password', password);
-    return this.api.putRequest('users/changePassword/' + this.currentUser.id, params, true);
+    return this.api.putRequest('users/changePassword/' + this.currentUser.id, params);
   }
 
   changeUserAddressInfo(address: UserAddress) {
@@ -60,7 +60,7 @@ export class UserService {
       .set('street_address', address.streetAdres)
       .set('zip_code', address.zipCode)
       .set('district', address.district);
-    return this.api.putRequest('address/update/' + this.currentUser.id, params, true);
+    return this.api.putRequest('address/update/' + this.currentUser.id, params);
   }
 
   setNewAuthToken(authToken: string) {

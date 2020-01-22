@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../shared/order.service';
 import {Order} from '../../shared/order.model';
 
@@ -16,7 +16,7 @@ export class AdminOrdersComponent implements OnInit {
       .subscribe((orders) => {
         this.orders = orders.content;
       }, errors => {
-        console.log(errors);
+        M.toast({html: errors.error.message});
       });
   }
 

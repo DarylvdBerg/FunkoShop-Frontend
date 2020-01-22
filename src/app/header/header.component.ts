@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import * as M from 'materialize-css';
-import {User} from '../user/user.model';
 import {Router} from '@angular/router';
 import {UserService} from '../user/user.service';
 

@@ -1,6 +1,5 @@
 import {Product} from '../products/product.model';
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,7 @@ import {Router} from '@angular/router';
 export class CartService {
   products: Product[];
 
-  constructor(private router: Router) {
+  constructor() {
     if (localStorage.getItem('cart') != null) {
       this.products = JSON.parse(localStorage.getItem('cart'));
     } else {
@@ -24,11 +23,6 @@ export class CartService {
       localStorage.setItem('cart', JSON.stringify(this.products));
       M.toast({html: `${product.name} toegevoegd aan het winkelmandje`});
     }
-  }
-
-  getProductsFromCart() {
-    this.products = JSON.parse(localStorage.getItem('cart'));
-    return this.products;
   }
 
   removeProductFromCart(index: number) {

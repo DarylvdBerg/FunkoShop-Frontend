@@ -14,7 +14,7 @@ export class ProductService {
 
   getProducts() {
     const productSubject = new Subject<Product[]>();
-    this.api.getRequest('product/all', false)
+    this.api.getRequest('product/all')
       .subscribe(response => {
         const product = response.content as Product[];
         productSubject.next(product);
@@ -25,7 +25,7 @@ export class ProductService {
 
   getProduct(id: number) {
     const productSubject = new Subject<Product>();
-    this.api.getRequest('product/' + id + '/', false)
+    this.api.getRequest('product/' + id + '/')
       .subscribe(response => {
         const product = response.content as Product;
         productSubject.next(product);
@@ -50,16 +50,15 @@ export class ProductService {
       .set('name', product.name)
       .set('description', product.description)
       .set('price', product.price.toString());
-    return this.api.postRequest('product/add', params, true);
+    return this.api.postRequest('product/add', params);
   }
 
   editProduct(product: Product) {
-    console.log(JSON.stringify(product));
     const params = new HttpParams()
       .set('name', product.name)
       .set('description', product.description)
       .set('price', product.price.toString());
-    return this.api.putRequest(`product/update/${product.id}`, params, true);
+    return this.api.putRequest(`product/update/${product.id}`, params);
   }
 
   saveProductImages(images: FileList, productId: number) {
@@ -68,7 +67,7 @@ export class ProductService {
       data.append('images', image);
     });
 
-    return this.api.postMultipartRequest(`images/upload/${productId}`, data, true);
+    return this.api.postMultipartRequest(`images/upload/${productId}`, data);
   }
 
   deleteProduct(id: number) {

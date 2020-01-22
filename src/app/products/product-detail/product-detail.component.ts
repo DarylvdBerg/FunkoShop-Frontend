@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../product.model';
