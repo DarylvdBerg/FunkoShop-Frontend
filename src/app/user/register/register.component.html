@@ -21,9 +21,10 @@
           </div>
           <div class="input-field">
             <label for="password">Wachtwoord</label>
-            <input type="password" name="password" id="password" ngModel required #password="ngModel">
+            <input type="password" name="password" id="password" ngModel required minlength="6" #password="ngModel">
             <div *ngIf="!password.valid && password.touched">
               <span class="helper-text" *ngIf="password.errors.required">Wachtwoord is verplicht!</span>
+              <span class="helper-text" *ngIf="password.errors.minlength">Wachtwoord moet groter als 6 tekens zijn</span>
             </div>
           </div>
           <div class="col s6 offset-s3 left-align">
