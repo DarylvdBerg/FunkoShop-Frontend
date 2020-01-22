@@ -54,7 +54,6 @@ export class ProductService {
   }
 
   editProduct(product: Product) {
-    console.log(JSON.stringify(product));
     const params = new HttpParams()
       .set('name', product.name)
       .set('description', product.description)

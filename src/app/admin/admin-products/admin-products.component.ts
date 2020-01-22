@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../products/product.service';
 import {Product} from '../../products/product.model';
 import Swal from 'sweetalert2';
