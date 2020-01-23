@@ -1,0 +1,94 @@
+<div class="col s12">
+  <div class="row">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12 l6">
+            <h5>Naam: {{this.userService.currentUser.name}}</h5>
+          </div>
+          <div class="col s12 l6">
+            <h5>Email: {{this.userService.currentUser.email}}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button class="btn modal-trigger" data-target="passwordModal">Wijzig wachtwoord</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12 l4">
+            <h5>Adres: {{this.userAddress.streetAdres}}</h5>
+          </div>
+          <div class="col s12 l4">
+            <h5>Postcode: {{this.userAddress.zipCode}}</h5>
+          </div>
+          <div class="col s12 l4">
+            <h5>Provincie: {{this.userAddress.district}}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button class="btn modal-trigger" data-target="addressModal">Wijzig adres gegevens</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="passwordModal" class="modal">
+    <form #passwordForm="ngForm" (ngSubmit)="changePassword()">
+      <div class="modal-content">
+        <h4>Wijzig wachtwoord</h4>
+        <div class="input-field">
+          <label for="oldPassword">Oud wachtwoord</label>
+          <input type="password" id="oldPassword" name="oldPassword" ngModel required #oldPassword="ngModel">
+          <div *ngIf="!oldPassword.valid && oldPassword.touched">
+            <span class="helper-text" *ngIf="oldPassword.errors.required">Invullen van oud wachtwoord is verplicht!</span>
+          </div>
+        </div>
+        <div class="input-field">
+          <label for="newPassword">Nieuw wachtwoord</label>
+          <input type="password" id="newPassword" name="password" ngModel required #newPassword="ngModel">
+          <div *ngIf="!newPassword.valid && newPassword.touched">
+            <span class="helper-text" *ngIf="newPassword.errors.required">Invullen van een nieuw wachtwoord is verplicht!</span>
+          </div>
+        </div>
+        <div class="input-field">
+          <label for="repeatPassword">Herhaal wachtwoord</label>
+          <input type="password" id="repeatPassword" name="repeatPassword" ngModel required #repeatPassword="ngModel">
+          <div *ngIf="!repeatPassword.valid && repeatPassword.touched">
+            <span class="helper-text" *ngIf="repeatPassword.errors.required">Herhalen van het nieuwe wachtwoord is verplicht!</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" [disabled]="!passwordform.valid">Wijzig wachtwoord</button>
+      </div>
+    </form>
+  </div>
+  <div id="addressModal" class="modal">
+    <form #addressForm="ngForm" (ngSubmit)="changeUserAddress()">
+      <div class="modal-content">
+        <h4>Wijzig adres gegevens</h4>
+        <div class="input-field">
+          <label for="streetAdres">Adres</label>
+          <input type="text" [(ngModel)]="userAddress.streetAdres" name="streetAdres" required id="streetAdres">
+        </div>
+        <div class="input-field">
+          <label for="zipCode">Postcode</label>
+          <input type="text" [(ngModel)]="userAddress.zipCode" name="zipCode" id="zipCode" required maxlength="6">
+        </div>
+        <div class="input-field">
+          <label for="district">Provincie</label>
+          <input type="text" [(ngModel)]="userAddress.district" name="district" id="district" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" [disabled]="!addressForm.valid">Wijzig adres gegevens</button>
+      </div>
+    </form>
+  </div>
+</div>

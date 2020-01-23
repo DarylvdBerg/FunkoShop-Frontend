@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3">
+          <a href="#producten">Producten</a>
+        </li>
+        <li [className]="userService.currentUser.privilege >= 2 ? 'tab col s3' : 'hide'">
+          <a href="#orders">Bestellingen</a>
+        </li>
+      </ul>
+    </div>
+    <div id="producten" class="col s12">
+      <app-admin-products></app-admin-products>
+    </div>
+    <div id="orders" class="col s12">
+      <app-admin-orders></app-admin-orders>
+    </div>
+  </div>
+</div>

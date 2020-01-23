@@ -1,0 +1,13 @@
+$primary-color: #ffb200;
+
+.nav-wrapper {
+  background-color: $primary-color;
+  font-family: Calibri, serif;
+  .brand-logo {
+    font-family: 'Pacifico', cursive;
+  }
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #ffb200;
+}

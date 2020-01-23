@@ -1,0 +1,20 @@
+<div class="parallax-container">
+  <div class="row">
+    <div class="parallax-container">
+      <div class="parallax"><img src="assets/images/banner2.jpg" alt=""></div>
+    </div>
+  </div>
+  <hr>
+</div>
+<div class="container">
+  <div class="row center">
+    <div class="col s12">
+      <h3>Laatste Funko's!</h3>
+    </div>
+  </div>
+  <div class="row">
+      <app-latest-products *ngFor="let product of products" [product]="product" class="col s12 m6 l4">
+
+      </app-latest-products>
+  </div>
+</div>

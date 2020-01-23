@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-image">
+    <img class="responsive-img" [src]="getProductImage(product)" alt="{{product.name}}">
+  </div>
+  <div class="card-content">
+    <h5 class="card-title">{{product.name}}</h5>
+    <div class="divider"></div>
+    <p style="font-style: italic; font-size: 18px;">&euro; {{product.price}}</p>
+  </div>
+  <div class="card-action">
+    <a [routerLink]="['/producten/',product.id]">Details</a>
+    <a (click)="this.cartService.addProductToCart(product)" style="cursor: pointer">In winkelmand</a>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.btn {
+  background-color: #ffb200;
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 1px solid red;
+}
+
+.input-field>label {
+  -webkit-transform: translateY(-14px) scale(0.8);
+  transform: translateY(-14px) scale(0.8);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}

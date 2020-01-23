@@ -1,0 +1,36 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Funkoshop</a>
+    <a href="" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="hide-on-med-and-down">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/">Home</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/producten/lijst">Producten</a>
+      </li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="userService.currentUser == null" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+      <li *ngIf="userService.currentUser == null" routerLinkActive="active"><a routerLink="/register">Register</a></li>
+      <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1" routerLinkActive="active">
+        <a routerLink="admin/paneel">Admin</a>
+      </li>
+      <li routerLinkActive="active"><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
+      <li *ngIf="userService.currentUser != null"><a routerLink="/" (click)="logout()">Uitloggen</a></li>
+      <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
+    </ul>
+  </div>
+</nav>
+<ul class="sidenav" id="mobileNav">
+  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+  <li routerLinkActive="active"><a routerLink="/producten/lijst">Producten</a></li>
+  <li routerLinkActive="active" *ngIf="userService.currentUser == null"><a routerLink="/login">Login</a></li>
+  <li routerLinkActive="active" *ngIf="userService.currentUser == null"><a routerLink="/register">Register</a></li>
+  <li *ngIf="userService.currentUser != null && userService.currentUser.privilege >= 1" routerLinkActive="active">
+    <a routerLink="admin/paneel">Admin</a>
+  </li>
+  <li routerLinkActive="active"><a routerLink="profiel" *ngIf="userService.currentUser != null">Profiel</a></li>
+  <li *ngIf="userService.currentUser != null"><a routerLink="/" (click)="logout()">Uitloggen</a></li>
+  <li routerLinkActive="active"><a routerLink="/cart/order"><i class="material-icons">shopping_basket</i></a></li>
+</ul>
