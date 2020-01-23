@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Product} from '../product.model';
 import {Image} from '../image.model';
 import {Subscription} from 'rxjs';
+import {CartService} from '../../cart/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,7 +17,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   routeSubscription: Subscription;
   @ViewChild('bigImg', {static: true}) bigImg;
 
-  constructor(private productService: ProductService, private activeRoute: ActivatedRoute) { }
+  constructor(private productService: ProductService, private activeRoute: ActivatedRoute, public cartService: CartService) { }
 
   ngOnInit() {
     this.routeSubscription = this.activeRoute.params
@@ -44,5 +45,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   changeBigImage(index: number) {
     this.bigImg.nativeElement.children[0]
       .setAttribute('src', this.getProductImages(this.product.images[index]));
+  }
+
+  addToCart() {
+    this.cartService.addProductToCart(this.product);
   }
 }
