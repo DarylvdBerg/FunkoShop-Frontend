@@ -8,7 +8,7 @@ import {UserService} from '../../user/user.service';
 })
 export class AdminPanelComponent implements OnInit, AfterViewInit {
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
   }

@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private cartService: CartService, private productService: ProductService,
+  constructor(public cartService: CartService, private productService: ProductService,
               private orderService: OrderService, private route: Router) { }
 
   ngOnInit() {
