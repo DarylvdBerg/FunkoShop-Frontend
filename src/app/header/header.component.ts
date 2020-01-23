@@ -9,7 +9,7 @@ import {UserService} from '../user/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  constructor(private route: Router, private userService: UserService) { }
+  constructor(private route: Router, public userService: UserService) { }
 
   ngOnInit() {
     if (localStorage.getItem('user') != null) {

@@ -13,7 +13,7 @@ export class UserInfoComponent implements OnInit {
   @ViewChild('passwordForm', {static: true}) passwordform: NgForm;
   @ViewChild('addressForm', {static: true}) addressForm: NgForm;
   userAddress: UserAddress = new UserAddress();
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
     Modal.init(document.querySelectorAll('.modal'));
